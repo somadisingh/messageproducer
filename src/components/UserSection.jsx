@@ -34,15 +34,14 @@ const UserSection = ({ onLogout }) => {
 
   const handleReplacementChange = (e) => {
     setReplacement(e.target.value);
-    let temp = selectedTemplate;
-    // remove word starting with # and replace with new word
-    temp = temp.substring(0,temp.indexOf('#')) + e.target.value;
-    setModifiedTemplate(temp);
-    console.log(temp);
   };
 
   const handleUpdateMessage = () => {
-    console.log('Updated Message:', modifiedTemplate);
+    let temp = selectedTemplate;
+    // remove word starting with # and replace with new word
+    temp = temp.substring(0, temp.indexOf('#')) + replacement;
+    setModifiedTemplate(temp);
+    console.log('Updated Message:', temp);
   };
 
   return (
