@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Login from './components/Login';
 import AdminSection from './components/AdminSection';
 import UserSection from './components/UserSection';
-import MessageProducer from './components/MessageProducer';
 
 const App = () => {
   const [userRole, setUserRole] = useState(null);

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MessageProducer from './MessageProducer';
 
-const UserSection = ({ onLogout }) => {
+const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState('');
@@ -96,6 +97,7 @@ const UserSection = ({ onLogout }) => {
           )}
         </div>
       )}
+      <MessageProducer modifiedTemplate={modifiedTemplate} />
     </div>
   );
 };

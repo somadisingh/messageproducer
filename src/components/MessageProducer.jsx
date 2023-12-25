@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import axios from 'axios';
 
-const MessageProducer = () => {
-  const [message, setMessage] = useState('');
+const MessageProducer = ({ modifiedTemplate }) => {
+  //console.log('new message', modifiedTemplate);
+  // const [message, setMessage] = useState('');
 
   const sendMessage = async () => {
+    console.log('Sending message:', modifiedTemplate);
     try {
       const response = await axios.post('http://localhost:8081/message/send', {
-        message: message,
+        message: modifiedTemplate,
       });
 
       if (response.status === 200) {
@@ -22,11 +24,11 @@ const MessageProducer = () => {
 
   return (
     <div>
-      <input
+      {/* <input
         type="text"
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+        onChange={(e) => setMessage(modifiedTemplate)}
+      /> */}
       <button onClick={sendMessage}>Send Message</button>
     </div>
   );
