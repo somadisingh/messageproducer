@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Add authentication logic here
-    // Call onLogin with user role after successful authentication
-    onLogin('admin'); // Replace with actual user role
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:8081/kafka-api/users/login', {
+        username: username,
+        password: password,
+      });
+
+      const userType = response.data;
+      console.log('User type:', userType);
+      onLogin(userType);
+
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }  
+    
   };
 
   return (

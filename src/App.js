@@ -11,11 +11,17 @@ const App = () => {
     setUserRole(role);
   };
 
+  const handleLogout = () => {
+    setUserRole(null);
+  }
+
   return (
     <div>
       <h1>Message Producer Tool</h1>
-      <MessageProducer />
-      {/* {!userRole ? (
+      {userRole ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : null}
+      {!userRole ? (
         <Login onLogin={handleLogin} />
       ) : (
         <div>
@@ -25,7 +31,7 @@ const App = () => {
             <UserSection />
           )}
         </div>
-      )} */}
+      )}
     </div>
   );
 };
