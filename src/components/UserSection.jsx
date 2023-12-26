@@ -40,9 +40,10 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
   const handleUpdateMessage = () => {
     let temp = selectedTemplate;
     // remove word starting with # and replace with new word
-    temp = temp.substring(0, temp.indexOf('#')) + replacement;
+    temp = temp.replace('#', replacement);
     setModifiedTemplate(temp);
     console.log('Updated Message:', temp);
+     
   };
 
   return (
