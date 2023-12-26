@@ -1,6 +1,6 @@
 import React from 'react';
 import MessageTemplate from './MessageTemplate';
-import UserSection from './PresetTemplate';
+import PresetTemplate from './PresetTemplate';
 
 const AdminSection = ({onLogout}) => {
   return (
@@ -9,7 +9,7 @@ const AdminSection = ({onLogout}) => {
 
       {/* <MessageTemplate /> */}
       {/* <KafkaDetails /> */}
-      <UserSection />
+      <PresetTemplate />
       <button onClick={onLogout}>Logout</button>
     </div>
   );

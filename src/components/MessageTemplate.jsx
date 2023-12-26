@@ -4,6 +4,7 @@ import axios from 'axios';
 const MessageTemplate = () => {
   const [templateName, setTemplateName] = useState('');
   const [templateContent, setTemplateContent] = useState('');
+  const [templateID, setTemplateId]= useState('');
 
   const handleAddTemplate = () => {
     // Create an object representing the template
@@ -25,14 +26,35 @@ const MessageTemplate = () => {
       });
   };
 
+  const handleDeleteTemplate = () => {
+    // Ensure templateId is not empty
+    if (!templateID) {
+      console.error('Please provide a template ID for deletion.');
+      return;
+    }
+
+    axios.delete(`http://localhost:8081/template/delete/${templateID}`)
+      .then(response => {
+        console.log('Template deleted successfully:', response.data);
+        setTemplateName('');
+        setTemplateContent('');
+        setTemplateId('');
+      })
+      .catch(error => {
+        console.error('Error deleting template:', error);
+      });
+  }
+
   return (
     <div>
       <h3>Message Template Form</h3>
+
       <label htmlFor="templateName">Template Name:</label>
       <input
         type="text"
         id="templateName"
         value={templateName}
+        placeholder='Enter template name'
         onChange={(e) => setTemplateName(e.target.value)}
       />
 
@@ -40,10 +62,23 @@ const MessageTemplate = () => {
       <textarea
         id="templateContent"
         value={templateContent}
+        placeholder='Enter template content'
         onChange={(e) => setTemplateContent(e.target.value)}
       />
 
       <button onClick={handleAddTemplate}>Add Template</button>
+
+      <br />
+
+      <label htmlFor="templateId">Template ID:</label>
+      <input
+        type="text"
+        id="templateId"
+        value={templateID}
+        placeholder='Enter template ID for deletion'
+        onChange={(e) => setTemplateId(e.target.value)}
+      />
+      <button onClick={handleDeleteTemplate}>Delete Template</button>
     </div>
   );
 };
