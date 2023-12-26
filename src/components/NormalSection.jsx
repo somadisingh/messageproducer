@@ -5,9 +5,9 @@ import UserSection from './PresetTemplate';
 const AdminSection = ({onLogout}) => {
   return (
     <div>
-      <h2>Admin Section</h2>
+      <h2>Normal User Section</h2>
 
-      <MessageTemplate />
+      {/* <MessageTemplate /> */}
       {/* <KafkaDetails /> */}
       <UserSection />
       <button onClick={onLogout}>Logout</button>

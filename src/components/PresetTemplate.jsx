@@ -33,14 +33,25 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
     setModifiedTemplate('');
   };
 
-  const handleReplacementChange = (e) => {
-    setReplacement(e.target.value);
-  };
+  // const handleReplacementChange = (e) => {
+  //   setReplacement(e.target.value);
+  // };
 
   const handleUpdateMessage = () => {
-    let temp = selectedTemplate;
+    //let temp = selectedTemplate;
     // remove word starting with # and replace with new word
-    temp = temp.replace('#', replacement);
+    //temp = temp.replace('#', replacement);
+    // convert temp to array
+    let temp = selectedTemplate.split(' ');
+    // iterate over array and replace word starting with # with new word
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].startsWith('#')) {
+        const newReplacement = prompt(`Enter replacement for ${temp[i]}`);
+        temp[i] = newReplacement;
+      }
+    }
+    // convert back to string
+    temp = temp.join(' ');
     setModifiedTemplate(temp);
     console.log('Updated Message:', temp);
      
@@ -48,7 +59,7 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
 
   return (
     <div>
-      <h2>Normal User Section</h2>
+      <h2>Preset Templates</h2>
       {loading && <p>Loading...</p>}
       {result.length > 0 && (
         <div>
@@ -84,13 +95,13 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
             <div>
               <h4>Selected Template Content:</h4>
               <p>{selectedTemplate}</p>
-              <label htmlFor="replacement">Replacement:</label>
+              {/* <label htmlFor="replacement">Replacement:</label>
               <input
                 type="text"
                 id="replacement"
                 value={replacement}
                 onChange={handleReplacementChange}
-              />
+              /> */}
               <p>Modified Template:</p>
               <p>{modifiedTemplate}</p>
               <button onClick={handleUpdateMessage}>Update Message</button>
@@ -99,6 +110,7 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
         </div>
       )}
       <MessageProducer modifiedTemplate={modifiedTemplate} />
+      {/* <button onClick={onLogout}>Logousst</button> */}
     </div>
   );
 };

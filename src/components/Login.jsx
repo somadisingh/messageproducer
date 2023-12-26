@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+//import { useHistory } from 'react-router-dom';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  //const history = useHistory();
 
   const handleLogin = async () => {
     try {
@@ -15,6 +17,7 @@ const Login = ({ onLogin }) => {
       const userType = response.data;
       console.log('User type:', userType);
       onLogin(userType);
+      //history.push('/${userType}');
 
     } catch (error) {
       console.error('Error logging in:', error);

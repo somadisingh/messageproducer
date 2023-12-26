@@ -13,7 +13,7 @@ const MessageTemplate = () => {
     };
 
     // Make a POST request to the Spring Boot API using Axios
-    axios.post('http://localhost:8081/save/template', templateData)
+    axios.post('http://localhost:8081/template/save', templateData)
       .then(response => {
         console.log('Template added successfully:', response.data);
         // Clear the form fields after adding the template
