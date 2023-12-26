@@ -25,4 +25,8 @@ public class MessageTemplateService {
     public MessageTemplate saveTemplate(MessageTemplate template) {
         return templateRepository.save(template);
     }
+
+    public void deleteTemplate(Long templateId) {
+        templateRepository.deleteById(templateId);
+    }
 }
