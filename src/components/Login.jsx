@@ -5,6 +5,7 @@ import axios from 'axios';
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [kafkaServer, setKafkaServer] = useState('');
   //const history = useHistory();
 
   const handleLogin = async () => {
@@ -25,6 +26,18 @@ const Login = ({ onLogin }) => {
     
   };
 
+  const handleUpdateConfig = () => {
+    axios.post('http://localhost:8081/server/update', {
+      kafkaServer: kafkaServer,
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error updating Kafka configuration:', error);
+    });
+  };
+
   return (
     <div>
       <label htmlFor="username">Username:</label>
@@ -34,6 +47,17 @@ const Login = ({ onLogin }) => {
       <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
       <button onClick={handleLogin}>Login</button>
+
+      <h3>Kafka Server Configuration</h3>
+      <label htmlFor="bootstrapServers">Kafka Server Address (Format -> broker:port):</label>
+      <input
+        type="text"
+        id="bootstrapServers"
+        value={kafkaServer}
+        onChange={(e) => setKafkaServer(e.target.value)}
+      />
+
+      <button onClick={handleUpdateConfig}>Update Kafka Configuration</button>
     </div>
   );
 };
