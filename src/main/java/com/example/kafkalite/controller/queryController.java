@@ -15,11 +15,11 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 @RestController
 @RequestMapping("/query")
-public class queryController {
+public class QueryController {
     private final QueryService queryService;
 
     @Autowired
-    public queryController(QueryService queryService) {
+    public QueryController(QueryService queryService) {
         this.queryService = queryService;
     }
 

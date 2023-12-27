@@ -17,7 +17,7 @@ import com.example.kafkalite.service.MessageTemplateService;
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/template")
-public class SaveTemplateController {
+public class TemplateController {
     
     @Autowired
     private MessageTemplateService messageTemplateService;

@@ -3,6 +3,7 @@ package com.example.kafkalite;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.kafka.annotation.EnableKafka;
 
 
@@ -11,6 +12,7 @@ import com.example.kafkalite.repo.UsersRepo;
 
 @SpringBootApplication
 @EnableKafka
+//@ComponentScan(basePackages = "com.example.kafkalite.resources")
 public class KafkaliteApplication {
 
 	public static void main(String[] args) {
