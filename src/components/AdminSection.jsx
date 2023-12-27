@@ -6,11 +6,11 @@ const AdminSection = ({onLogout}) => {
   return (
     <div>
       <h2>Admin Section</h2>
-
+      <button onClick={onLogout}>Logout</button>
       <MessageTemplate />
       {/* <KafkaDetails /> */}
       <PresetTemplate />
-      <button onClick={onLogout}>Logout</button>
+      
     </div>
   );
 };

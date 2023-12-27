@@ -57,6 +57,10 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
      
   };
 
+  const handleRefreshTable = () => {
+    runQuery('select * from message_template');
+  };
+
   return (
     <div>
       <h2>Preset Templates</h2>
@@ -90,7 +94,7 @@ const UserSection = ({ onLogout, setModifiedTemplateProp }) => {
               ))}
             </tbody>
           </table>
-
+          <button onClick={handleRefreshTable}>Refresh Table</button>
           {selectedTemplate && (
             <div>
               <h4>Selected Template Content:</h4>
