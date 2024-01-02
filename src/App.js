@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import LoginPage from './components/Login';
-import AdminSection from './components/AdminSection';
-import UserSection from './components/PresetTemplate';
-import NormalSection from './components/NormalSection';
+import AdminSection from './components/Dashboards/AdminSection';
+import UserSection from './components/Functions/PresetTemplate';
+import NormalSection from './components/Dashboards/NormalSection';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {

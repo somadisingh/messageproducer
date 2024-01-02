@@ -1,7 +1,8 @@
 // import React, { useState } from 'react';
 import axios from 'axios';
+import '../../designs/MessageProducer.css';
 
-const MessageProducer = ({ modifiedTemplate }) => {
+const MessageSendButton = ({ modifiedTemplate }) => {
   //console.log('new message', modifiedTemplate);
   // const [message, setMessage] = useState('');
 
@@ -29,9 +30,9 @@ const MessageProducer = ({ modifiedTemplate }) => {
         value={message}
         onChange={(e) => setMessage(modifiedTemplate)}
       /> */}
-      <button onClick={sendMessage}>Send Message</button>
+      <button className="sendMessage" onClick={sendMessage}>Send Message</button>
     </div>
   );
 };
 
-export default MessageProducer;
+export default MessageSendButton;

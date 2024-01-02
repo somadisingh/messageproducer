@@ -1,6 +1,6 @@
 import React from 'react';
-import MessageTemplate from './MessageTemplate';
-import PresetTemplate from './PresetTemplate';
+import MessageTemplate from '../Functions/MessageTemplate';
+import PresetTemplate from '../Functions/PresetTemplate';
 
 const AdminSection = ({onLogout}) => {
   return (
