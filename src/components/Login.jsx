@@ -36,25 +36,26 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <label htmlFor="username">Username:</label>
-      <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+    <div className="container">
+      <label className="label" htmlFor="username">Username:</label>
+      <input className="input" type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
 
-      <label htmlFor="password">Password:</label>
-      <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <label className="label" htmlFor="password">Password:</label>
+      <input className="input" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-      <button onClick={handleLogin}>Login</button>
+      <button className="button" onClick={handleLogin}>Login</button>
 
       <h3>Kafka Server Configuration (by default application connects to localhost:9092)</h3>
-      <label htmlFor="bootstrapServers">Kafka Server Address (Format -> broker:port):</label>
+      <label className="label" htmlFor="bootstrapServers">Kafka Server Address (Format = broker:port):</label>
       <input
+        className="input"
         type="text"
         id="bootstrapServers"
         value={kafkaServer}
         onChange={(e) => setKafkaServer(e.target.value)}
       />
 
-      <button onClick={handleUpdateConfig}>Update Kafka Configuration</button>
+      <button className="button" onClick={handleUpdateConfig}>Update Kafka Configuration</button>
     </div>
   );
 };
