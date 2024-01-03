@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'; 
 import "../../designs/DeleteTemplate.css";
 
 const HandleDeleteTemplateComponent = ({ setTemplateId }) => {
@@ -15,7 +15,6 @@ const HandleDeleteTemplateComponent = ({ setTemplateId }) => {
       .then(response => {
         console.log('Template deleted successfully:', templateID);
         setTemplateId('');
-        //runQuery('select * from message_template');
       })
       .catch(error => {
         console.error('Error deleting template:', error);

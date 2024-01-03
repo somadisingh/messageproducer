@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginPage from './components/Login';
 import AdminSection from './components/Dashboards/AdminSection';
-import UserSection from './components/Functions/PresetTemplate';
+import UserSection from './components/Functions/PresetTemplate2';
 import NormalSection from './components/Dashboards/NormalSection';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {
   const [userType, setUserType] = useState(null);
 
+  useEffect(() => {
+    // Check if there's already a role stored in local storage
+    const role = localStorage.getItem('userRole');
+
+    // If there's a role stored in local storage, set the user type
+    if (role) {
+      setUserType(role);
+    }
+  }, []);
+
   const handleLogin = (role) => {
+    // Store the role in local storage
+    localStorage.setItem('userRole', role);
     setUserType(role);
-  };
+};
 
   const handleLogout = () => {
+    // Remove the role from local storage
+    localStorage.removeItem('userRole');
     setUserType(null);
     return <Navigate to="/" />;
-  }
+  };
 
   return (
     <Router>

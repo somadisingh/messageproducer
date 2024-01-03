@@ -1,14 +1,25 @@
-import React from 'react';
-import MessageTemplate from '../Functions/MessageTemplate';
-import PresetTemplate from '../Functions/PresetTemplate';
+import React, { useState, useEffect } from "react";
+import PresetTemplate2 from "../Functions/PresetTemplate2";
+import SendMessageTemplate from "../Functions/SendMessageTemplate";
 
-const AdminSection = ({onLogout}) => {
+const AdminSection = ({ onLogout }) => {
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+
+  useEffect(() => {
+    console.log("Selected Template:", selectedTemplate);
+  }, [selectedTemplate]);
+
   return (
-    <div>
+    <div className="container">
       <h2>Normal User Section</h2>
-      <button className='button' onClick={onLogout}>Logout</button>
+      <button className="button" onClick={onLogout}>
+        Logout
+      </button>
       {/* <MessageTemplate /> */}
-      <PresetTemplate />
+      <PresetTemplate2 setSelectedTemplate={setSelectedTemplate} />
+      <SendMessageTemplate
+        selectedTemplate={selectedTemplate && selectedTemplate.template_content}
+      />
     </div>
   );
 };
