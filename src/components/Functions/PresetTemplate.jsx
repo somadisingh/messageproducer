@@ -33,19 +33,78 @@ const PresetTemplate = () => {
     setModifiedTemplate('');
   };
 
-  const handleUpdateMessage = () => {
+  // const handleUpdateMessage = () => {
+  //   let temp = selectedTemplate.split(' ');
+  //   for (let i = 0; i < temp.length; i++) {
+  //     if (temp[i].startsWith('#')) {
+  //       const newReplacement = prompt(`Enter replacement for ${temp[i]}`);
+  //       temp[i] = newReplacement;
+  //     }
+  //   }
+  //   temp = temp.join(' ');
+  //   setModifiedTemplate(temp);
+  //   console.log('Updated Message:', temp);
+     
+  // };
+
+  // const handleUpdateMessage = () => {
+  //   let temp = selectedTemplate.split(' ');
+  
+  //   for (let i = 0; i < temp.length; i++) {
+  //     if (temp[i].match(/{\w+\*}/)) {
+  //       // If {word*} format is found, make replacement mandatory
+  //       const wordToReplace = temp[i].slice(1, -2);
+  //       const newReplacement = prompt(`Enter replacement for ${wordToReplace}:`);
+  //       if (newReplacement === null) {
+  //         // If user cancels, don't update the message
+  //         return;
+  //       }
+  //       temp[i] = newReplacement + '*';
+  //     } else if (temp[i].match(/{\w+}/)) {
+  //       // If {word} format is found, prompt for replacement
+  //       const wordToReplace = temp[i].slice(1, -1);
+  //       const newReplacement = prompt(`Enter replacement for ${wordToReplace}`);
+  //       temp[i] = newReplacement;
+  //     }
+  //   }
+  
+  //   temp = temp.join(' ');
+  //   setModifiedTemplate(temp);
+  //   console.log('Updated Message:', temp);
+  // };
+  
+  const handleUpdateMessage = async () => {
     let temp = selectedTemplate.split(' ');
+  
     for (let i = 0; i < temp.length; i++) {
-      if (temp[i].startsWith('#')) {
-        const newReplacement = prompt(`Enter replacement for ${temp[i]}`);
+      if (temp[i].match(/{\w+\*}/)) {
+        // If {word*} format is found, make replacement unskippable
+        const wordToReplace = temp[i].slice(1, -2);
+        let newReplacement;
+  
+        do {
+          newReplacement = prompt(`Enter replacement for ${wordToReplace} (mandatory):`);
+          if (newReplacement === null || newReplacement.trim() === '') {
+            // If user skips or enters an empty string, show a mandatory message
+            alert('Replacement is mandatory. Please enter a value.');
+          }
+        } while (newReplacement === null || newReplacement.trim() === '');
+  
+        temp[i] = newReplacement;
+      } else if (temp[i].match(/{\w+}/)) {
+        // If {word} format is found, prompt for replacement
+        const wordToReplace = temp[i].slice(1, -1);
+        const newReplacement = prompt(`Enter replacement for ${wordToReplace}`);
         temp[i] = newReplacement;
       }
     }
+  
     temp = temp.join(' ');
     setModifiedTemplate(temp);
     console.log('Updated Message:', temp);
-     
   };
+  
+  
 
   const handleRefreshTable = () => {
     runQuery('select * from message_template');
