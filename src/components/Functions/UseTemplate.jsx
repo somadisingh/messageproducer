@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MessageSendButton from "../Buttons/MessageProducer";
+import MessageSendButton from "../Buttons/MessageSendButton";
 import "../../designs/PresetTemplate.css";
 
-// This component is responsible for updating the selected template and sending the message
-export default function SendMessageTemplate(props) {
+// This component is responsible for using the selected template and sending the message
+export default function UseTemplate(props) {
   const [modifiedTemplate, setModifiedTemplate] = useState("");
 
   const handleUpdateMessage = async () => {

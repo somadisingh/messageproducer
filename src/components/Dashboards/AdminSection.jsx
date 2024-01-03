@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PresetTemplate2 from "../Functions/PresetTemplate2";
-import ModifyTemplate from "../Functions/ModifyTemplate";
-import SendMessageTemplate from "../Functions/SendMessageTemplate";
+import AddDeleteTemplate from "../Functions/AddDeleteTemplate";
+import UseTemplate from "../Functions/UseTemplate";
 
 const AdminSection = ({ onLogout }) => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
@@ -11,30 +11,22 @@ const AdminSection = ({ onLogout }) => {
   }, [selectedTemplate]);
 
   return (
-    <div>
+    <div className="container">
       <h2>Admin Section</h2>
       <button className="button" onClick={onLogout}>
         Logout
       </button>
-      {/* {console.log('Selected Template before pt:', templateID)} */}
 
-      {/* <MessageTemplate />
-      <PresetTemplate /> */}
-      {/* {console.log('Selected Template after pt:', templateID)} */}
-      <div className="container">
-        <h2 className="heading">Preset Templates 2</h2>
-        <ModifyTemplate
-          selectedTemplate={selectedTemplate}
-          setSelectedTemplate={setSelectedTemplate}
-        />
-        <PresetTemplate2 setSelectedTemplate={setSelectedTemplate} />
+      <h2 className="heading">Preset Templates 2</h2>
+      <AddDeleteTemplate
+        selectedTemplate={selectedTemplate}
+        setSelectedTemplate={setSelectedTemplate}
+      />
+      <PresetTemplate2 setSelectedTemplate={setSelectedTemplate} />
 
-        <SendMessageTemplate
-          selectedTemplate={
-            selectedTemplate && selectedTemplate.template_content
-          }
-        />
-      </div>
+      <UseTemplate
+        selectedTemplate={selectedTemplate && selectedTemplate.template_content}
+      />
     </div>
   );
 };

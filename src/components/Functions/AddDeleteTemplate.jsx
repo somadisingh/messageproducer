@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MessageSendButton from "../Buttons/MessageProducer";
+import MessageSendButton from "../Buttons/MessageSendButton";
 import "../../designs/PresetTemplate.css";
 import "../../designs/AddTemplate.css";
 
-export default function ModifyTemplate(props) {
+// This component is used to add and delete templates.
+export default function AddDeleteTemplate(props) {
   const [showAddForm, setShowAddForm] = useState(false);
   const [templateName, setName] = useState("");
   const [templateContent, setContent] = useState("");
@@ -21,7 +22,7 @@ export default function ModifyTemplate(props) {
         console.log("Template added successfully:", response.data);
         setName("");
         setContent("");
-        document.getElementById("add-template").close();
+        document.getElementById("add-template").close(); // Close the add template form dialog box
       })
       .catch((error) => {
         console.error("Error adding template:", error);
@@ -56,7 +57,7 @@ export default function ModifyTemplate(props) {
         className="button"
         onClick={(e) => {
           e.preventDefault();
-          document.getElementById("add-template").showModal();
+          document.getElementById("add-template").showModal(); // Show the add template form as a dialog box
         }}
       >
         Add Template
@@ -68,6 +69,8 @@ export default function ModifyTemplate(props) {
       >
         Delete Template
       </button>
+
+      {/* Add Template Form as a dialog box */}
       <dialog id="add-template">
         <div className="container">
           <h3 className="heading">Add Template</h3>
@@ -104,7 +107,7 @@ export default function ModifyTemplate(props) {
               document.getElementById("add-template").close();
             }}
           >
-            Cancel
+            Close
           </button>
         </div>
       </dialog>

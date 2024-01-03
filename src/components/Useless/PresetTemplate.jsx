@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MessageSendButton from "../Buttons/MessageProducer";
+import MessageSendButton from "../Buttons/MessageSendButton";
 import "../../designs/PresetTemplate.css";
 
 const PresetTemplate = ({ editToolbar }) => {

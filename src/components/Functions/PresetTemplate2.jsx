@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MessageSendButton from "../Buttons/MessageProducer";
+import MessageSendButton from "../Buttons/MessageSendButton";
 import "../../designs/PresetTemplate.css";
 
+// Display the templates
 export default function PresetTemplate2(props) {
   const [result, setResult] = useState([]);
 
@@ -33,7 +34,7 @@ export default function PresetTemplate2(props) {
 
   const handleRadioChange = (row) => {
     console.log("Selected Template main:", row.id);
-    props.setSelectedTemplate(row);
+    props.setSelectedTemplate(row); // pass the selected template to the parent
   };
 
   const handleRefreshTable = () => {

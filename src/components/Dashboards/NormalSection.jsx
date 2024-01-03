@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PresetTemplate2 from "../Functions/PresetTemplate2";
-import SendMessageTemplate from "../Functions/SendMessageTemplate";
+import UseTemplate from "../Functions/UseTemplate";
 
 const AdminSection = ({ onLogout }) => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
@@ -15,9 +15,9 @@ const AdminSection = ({ onLogout }) => {
       <button className="button" onClick={onLogout}>
         Logout
       </button>
-      {/* <MessageTemplate /> */}
+
       <PresetTemplate2 setSelectedTemplate={setSelectedTemplate} />
-      <SendMessageTemplate
+      <UseTemplate
         selectedTemplate={selectedTemplate && selectedTemplate.template_content}
       />
     </div>
