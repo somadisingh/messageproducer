@@ -4,7 +4,7 @@ import axios from "axios";
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [kafkaServer, setKafkaServer] = useState("");
+  // const [kafkaServer, setKafkaServer] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -24,18 +24,18 @@ const Login = ({ onLogin }) => {
     }
   };
 
-  const handleUpdateConfig = () => {
-    axios
-      .post("http://localhost:8081/server/update", {
-        kafkaServer: kafkaServer,
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error updating Kafka configuration:", error);
-      });
-  };
+  // const handleUpdateConfig = () => {
+  //   axios
+  //     .post("http://localhost:8081/server/update", {
+  //       kafkaServer: kafkaServer,
+  //     })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error updating Kafka configuration:", error);
+  //     });
+  // };
 
   return (
     <div className="container">
@@ -65,7 +65,7 @@ const Login = ({ onLogin }) => {
         Login
       </button>
 
-      <h3>
+      {/* <h3>
         Kafka Server Configuration (by default application connects to
         localhost:9092)
       </h3>
@@ -82,7 +82,7 @@ const Login = ({ onLogin }) => {
 
       <button className="button" onClick={handleUpdateConfig}>
         Update Kafka Configuration
-      </button>
+      </button> */}
     </div>
   );
 };

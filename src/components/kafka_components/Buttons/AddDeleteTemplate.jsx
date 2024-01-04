@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import MessageSendButton from "../Buttons/MessageSendButton";
-import "../../designs/PresetTemplate.css";
-import "../../designs/AddTemplate.css";
+//import MessageSendButton from "./MessageSendButton";
+import "../designs/PresetTemplate.css";
+import "../designs/AddTemplate.css";
 
 // This component is used to add and delete templates.
 export default function AddDeleteTemplate(props) {
-  const [showAddForm, setShowAddForm] = useState(false);
+  // const [showAddForm, setShowAddForm] = useState(false);
   const [templateName, setName] = useState("");
   const [templateContent, setContent] = useState("");
 

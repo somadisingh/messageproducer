@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import LoginPage from './components/Login';
-import AdminSection from './components/Dashboards/AdminSection';
-import UserSection from './components/Functions/PresetTemplate2';
-import NormalSection from './components/Dashboards/NormalSection';
+import LoginPage from './components/kafka_components/KafkaLogin/Login';
+import AdminSection from './components/kafka_components/Dashboards/AdminSection';
+//import UserSection from './components/Functions/PresetTemplate2';
+import NormalSection from './components/kafka_components/Dashboards/NormalSection';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {

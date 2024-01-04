@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import axios from 'axios';
-import '../../designs/MessageProducer.css';
+import '../designs/MessageProducer.css';
 
 const MessageSendButton = ({ modifiedTemplate }) => {
   //console.log('new message', modifiedTemplate);
@@ -14,12 +14,12 @@ const MessageSendButton = ({ modifiedTemplate }) => {
       });
 
       if (response.status === 200) {
-        console.log('Message sent successfully');
+        console.log('Template Posted successfully');
       } else {
-        console.error('Failed to send message');
+        console.error('Failed to send template');
       }
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error sending template:', error);
     }
   };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MessageSendButton from "../Buttons/MessageSendButton";
-import "../../designs/PresetTemplate.css";
+//import MessageSendButton from "../Buttons/MessageSendButton";
+import "../designs/PresetTemplate.css";
 
 // Display the templates
 export default function PresetTemplate2(props) {
@@ -37,19 +37,19 @@ export default function PresetTemplate2(props) {
     props.setSelectedTemplate(row); // pass the selected template to the parent
   };
 
-  const handleRefreshTable = () => {
-    runQuery("select * from message_template");
-  };
+  // const handleRefreshTable = () => {
+  //   runQuery("select * from message_template");
+  // };
 
   return (
     <div>
-      {result.length == 0 && <p className="loading">Loading...</p>}
+      {result.length === 0 && <p className="loading">Loading...</p>}
       {result.length > 0 && (
         <div>
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>Template Name</th>
                 <th>Template Content</th>
                 <th>Select</th>
@@ -58,7 +58,7 @@ export default function PresetTemplate2(props) {
             <tbody>
               {result.map((row) => (
                 <tr key={row.id}>
-                  <td>{row.id}</td>
+                  {/* <td>{row.id}</td> */}
                   <td>{row.template_name}</td>
                   <td>{row.template_content}</td>
                   <td>

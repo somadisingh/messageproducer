@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+//import axios from "axios";
 import MessageSendButton from "../Buttons/MessageSendButton";
-import "../../designs/PresetTemplate.css";
+import "../designs/PresetTemplate.css";
 
 // This component is responsible for using the selected template and sending the message
 export default function UseTemplate(props) {
