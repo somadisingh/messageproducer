@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 // import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 // import java.util.List;
+import java.util.Map;
 
 // import com.example.kafkalite.entity.MessageTemplate;
 // import com.example.kafkalite.service.MessageTemplateService;
@@ -66,6 +67,8 @@ public class MessageController {
 
     @PostMapping("/send")
     public ResponseEntity<?> sendMessage(@RequestBody String message) {
+        System.out.println("Message received: " + message);
+        //message = "{\"message\":\"{\\n  \\\"title\\\": \\\"SDE\\\",\\n  \\\"skills\\\": \\\"React\\\",\\n  \\\"experience\\\": \\\"3\\\"\\n}\"}";
         this.kafkaService.produceMessage(message);
         return ResponseEntity.ok("Message sent!");
 

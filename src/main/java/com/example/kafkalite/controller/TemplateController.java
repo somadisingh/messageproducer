@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.kafkalite.entity.MessageTemplate;
 import com.example.kafkalite.service.MessageTemplateService;
 
+import com.example.kafkalite.entity.JsonTemplate;
+import com.example.kafkalite.service.JsonTemplateService;
+
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/template")
@@ -31,6 +34,20 @@ public class TemplateController {
     public ResponseEntity<String> deleteMessageTemplate(@PathVariable Long id) {
         messageTemplateService.deleteTemplate(id);
         return ResponseEntity.ok("Template deleted successfully");
+    }
+
+    @Autowired
+    private JsonTemplateService jsonMessageTemplateService;
+
+    @PostMapping("/savejsontemplate")
+    public JsonTemplate saveJsonMessageTemplate(@RequestBody JsonTemplate template) {
+        return jsonMessageTemplateService.saveTemplate(template);
+    }
+
+    @DeleteMapping("/deletejsontemplate/{id}")
+    public ResponseEntity<String> deleteJsonMessageTemplate(@PathVariable Long id) {
+        jsonMessageTemplateService.deleteTemplate(id);
+        return ResponseEntity.ok("JSON Template deleted successfully");
     }
 
 }
